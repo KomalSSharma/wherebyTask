@@ -97,7 +97,7 @@ color:grey;
 }
 `
 
-function HomeImageGal() {
+function HomeImgGal2() {
     const [images, setImages] = useState([andrew,akari, paul, holt]); 
 
   const handleImageUpload = (index, event) => {
@@ -156,4 +156,4 @@ function HomeImageGal() {
   )
 }
 
-export default HomeImageGal
+export default HomeImgGal2

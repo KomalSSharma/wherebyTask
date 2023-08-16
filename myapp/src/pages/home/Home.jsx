@@ -7,7 +7,7 @@ import HomeImageGal from './HomeImageGal'
 import HomeGallery from './HomeGallery'
 import About from './About'
 import HomeFooter from './HomeFooter'
-import AddImage from './AddImage'
+
 
 export const HomeContainer=styled.main`
 width:100%;
@@ -26,7 +26,6 @@ function Home() {
         <HomeGallery/>
         <About/>
         <HomeFooter/>
-        {/* <AddImage/> */}
     </HomeContainer>
   )
 }
