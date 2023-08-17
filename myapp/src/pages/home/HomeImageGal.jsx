@@ -42,7 +42,7 @@ color:grey;
             width:100%;
             // margin:0.5em;
             height:100%;
-            border:1px solid lightgrey;
+            // border:1px solid lightgrey;
             border-radius:9px;
         };
         .home-input{

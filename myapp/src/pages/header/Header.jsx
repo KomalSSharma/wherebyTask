@@ -22,6 +22,7 @@ transition: background-color 0.3s ease;
         height: 3.8em;
         width: 7em;
         overflow:hidden;
+        cursor:pointer;
 
         img{
             width:100%;
@@ -51,6 +52,7 @@ list-style:none;
             display:flex;
             align-items:center;
             justify-content:center;;
+            cursor:pointer;
             span{
                 transition:0.5s;
                 margin:0.2em;

@@ -4,6 +4,8 @@ import akari from '../../assets/akari.webp'
 import holt from '../../assets/holt.webp'
 import paul from '../../assets/paul.webp'
 import andrew from '../../assets/andrew.webp'
+import { motion } from 'framer-motion';
+import { InView } from 'react-intersection-observer';
 
 export const HomeGalleryContainer=styled.div`
 width:100%;
@@ -68,59 +70,66 @@ justify-content:center;
 
 `
 
+const variants = {
+    visible: { opacity:1 },
+    hidden: { opacity:0 }, 
+  };
+
+  const galleryImageData = [
+    {
+        id:1,
+        src:andrew,
+        name:'Andrew Morison',
+        intro:'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laborum, quo.'
+    },
+    {
+        id:2,
+        src:paul,
+        name:'Paul Stefan',
+        intro:'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laborum, quo.'
+    },
+    {
+        id:1,
+        src:holt,
+        name:'Mary Clarie',
+        intro:'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laborum, quo.'
+    },
+    {
+        id:1,
+        src:akari,
+        name:'Akari Gonsari',
+        intro:'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laborum, quo.'
+    },
+  ]
+
 function HomeGallery() {
   return (
     <HomeGalleryContainer>
-        <div className='home-gal'>
-        <div className='home-gal-item'>
-        <img  alt='image' src={akari}/>
-        <p>Dextor Gilbert</p>
-        </div>
+{galleryImageData && galleryImageData.map((item, index) => (
+        <InView key={item.id}>
+          {({ inView, ref }) => (
+            <motion.div
+              ref={ref}
+              className='home-gal'
+              variants={variants}
+              initial='hidden'
+              animate={inView ? 'visible' : 'hidden'}
+              transition={{ duration: 0.5, delay: index * 0.2 }}
+            >
+              <div className='home-gal-item'>
+                <img alt='image' src={item.src} />
+                <p>{item.name}</p>
+              </div>
+              <div className='home-gal-item-text'>
+                <h5>{item.name}</h5>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laborum, quo.</p>
+              </div>
+            </motion.div>
+          )}
+        </InView>
+      ))}
 
 
-        <div className='home-gal-item-text'>
-            <h5>Dextor Gilbert</h5>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laborum, quo.</p>
-        </div>
-        </div>
-        <div className='home-gal'>
-        <div className='home-gal-item'>
-        <img  alt='image' src={holt}/>
-        <p>Mary Collier</p>
-        </div>
-
-
-        <div className='home-gal-item-text'>
-            <h5>Mary Collier</h5>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laborum, quo.</p>
-        </div>
-        </div>
-
-        <div className='home-gal'>
-        <div className='home-gal-item'>
-        <img  alt='image' src={andrew}/>
-        <p>Stefan Morrison</p>
-        </div>
-
-
-        <div className='home-gal-item-text'>
-            <h5>Stefan Morrison</h5>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laborum, quo.</p>
-        </div>
-        </div>
-
-        <div className='home-gal'>
-        <div className='home-gal-item'>
-        <img  alt='image' src={paul}/>
-        <p>Bill Smith</p>
-        </div>
-
-
-        <div className='home-gal-item-text'>
-            <h5>Bill Smith</h5>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laborum, quo.</p>
-        </div>
-        </div>
     </HomeGalleryContainer>
   )
 }
